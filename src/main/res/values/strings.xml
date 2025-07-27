@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CarRentalNotification</string>
+    <string name="notification_title">CarRentalNotification</string>
+    <string name="notification_text">Tracking real-time vehicle speed</string>
+</resources>
