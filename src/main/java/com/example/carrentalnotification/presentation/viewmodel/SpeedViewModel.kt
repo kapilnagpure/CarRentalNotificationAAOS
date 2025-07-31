@@ -9,20 +9,19 @@ import com.example.carrentalnotification.domain.usecase.CheckSpeedUseCase
 
 class SpeedViewModel : ViewModel() {
     // Wiring dependencies manually (can be replaced with Hilt/Dagger)
-    val speedData = MutableLiveData("20")
-   // var speedData = MutableLiveData("20")
-    val customerIdData = MutableLiveData("customerId")
-    private val firebaseClient = FirebaseClient()
-    private val awsClient = AwsClient()
-    private val repository = SpeedRepositoryImpl(firebaseClient, awsClient)
-    private val useCase = CheckSpeedUseCase(repository)
-    val speedWarning = MutableLiveData<Boolean>()
 
-    fun onSpeedChanged(customerId: String, speed: Float) {
-        val isOverSpeed = useCase.execute(customerId, speed)
-        speedWarning.postValue(isOverSpeed)
-        speedData.value = speed.toString()
-        customerIdData.value = customerId
+    private val mFirebaseClient = FirebaseClient()
+    private val mAwsClient = AwsClient()
+    private val mRepository = SpeedRepositoryImpl(mFirebaseClient, mAwsClient)
+    private val mUseCase = CheckSpeedUseCase(mRepository)
+    val mSpeedWarning = MutableLiveData<Boolean>()
+    val mCustomerIdData = MutableLiveData(mRepository.getCustomerConfig().customerId)
+    val mSpeedData = MutableLiveData("20")
+
+    fun onSpeedChanged(speed: Float) {
+        val isOverSpeed = mUseCase.execute(speed)
+        mSpeedWarning.postValue(isOverSpeed)
+        mSpeedData.value = speed.toString()
     }
 }
 

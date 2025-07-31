@@ -12,8 +12,8 @@ class SpeedRepositoryImpl(
     private val awsClient: AwsClient
 ) : SpeedRepository {
 
-    override fun getCustomerConfig(customerId: String): CustomerConfig {
-        return CustomerConfigProvider.getConfig(customerId)
+    override fun getCustomerConfig(): CustomerConfig {
+        return CustomerConfigProvider.getConfig()
     }
 
     override fun notifyViolation(config: CustomerConfig, speed: Float) {

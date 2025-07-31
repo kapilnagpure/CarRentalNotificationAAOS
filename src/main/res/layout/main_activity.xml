@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{viewModel.customerIdData}"
+            android:text="@{viewModel.MCustomerIdData}"
             android:textSize="18sp" />
 
         <TextView
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@{viewModel.speedData}" />
+            android:text="@{viewModel.MSpeedData}" />
     </LinearLayout>
 
 </layout>
